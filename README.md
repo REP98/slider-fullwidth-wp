@@ -1,5 +1,5 @@
 # Slider Post FUllPAGE #
-* Contributors: robert0perez
+* Contributors: [Robert Pérez](https://svilupporep.site/robertperez)
 * Link doc: http://svilupporep.site/spfp
 * Tags: slider, post, fullscreen
 * Requires at least: 5.0
