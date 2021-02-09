@@ -1,0 +1,101 @@
+.rp_card {
+    display: block;
+    position: relative;
+    font-size: .875rem;
+    width: calc(100% - 1rem);
+    margin: pxTorem(8px) auto;
+    border-radius: pxTorem(2px);
+    border: 1px solid #dfdfdf;
+    background-color: #fff;
+    transform:  scale(0) translatex(200%);
+    transition: all 0.5s;
+
+    &::before{
+        content: "";
+        height: 0;
+        position: absolute;
+        top: pxTorem(15px);
+        width: 0;
+        z-index: 1;
+        right: auto;
+        left: 100%;
+        border: medium solid #fff;
+        border-width: pxTorem(10px) 0 pxTorem(10px) pxTorem(10px);
+        border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #fff;
+        box-sizing: border-box;
+    }
+
+    & .rcard-header {
+        border-bottom: 1px #eee solid;
+        padding: 1rem;
+        font-size: pxTorem(16px);
+        border-radius: pxTorem(2px) pxTorem(2px) 0 0;
+        display: block;
+
+        & .avatar {
+            float: left;
+            overflow: hidden;
+            & img {
+                width: 100%;
+                min-height: 100%;
+            }
+        }
+        & .name {
+            margin-left: 3.375rem;
+            font-weight: 500;
+        }
+        & .date {
+            margin-left: 3.375rem;
+            font-size: .8125rem;
+            font-weight: 500;
+            color: #ddd;
+        }
+    }
+    & .rcard-content {
+        display: block;
+        &.p-2{ padding: pxTorem(8px); }
+        & h3{
+            font-weight: 500 !important;
+            font-size: 1.5rem !important;
+            margin-bottom: 0rem !important;
+        }
+        & p{
+            color: #969696;
+            margin-top: 0rem !important;
+            line-height: 1.2;
+            font-size: 1rem;
+        }
+    }
+    & .rcard-footer {
+        border-top: 1px #eee solid;
+        padding: 1rem;
+        border-radius: 0 0 pxTorem(2px) pxTorem(2px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 3rem;
+    }
+
+    &.rp_image-header {
+        & .rcard-header {
+            height: 9rem;
+            vertical-align: bottom;
+            background-size: cover;
+            background-position: center;
+            align-items: flex-end;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-flow: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+    }
+    &.show{
+      transform: scale(1) translatex(0%);
+    }
+}
+
+* + .rp_card {
+    margin-top: 1rem;
+}

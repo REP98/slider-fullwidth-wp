@@ -1,0 +1,87 @@
+:root{
+	//MODAL
+	--modal--overlay-bg: rgba(0,0,0,.6);
+	--modal--overlay-animate: 'zoomInDown';
+	--modal--container-bg: #fff;
+	--modal-title-fg: #1a1a1a;
+	--modal-content-fg: #1a1a1a;
+	--modal-bdradius1: 0.25rem;
+
+	//Plyr
+	--plyr-color-main: #737F84;
+	--plyr-badge-background: #4a5464;
+	--plyr-badge-text-color: #ffffff;
+	--plyr-badge-border-radius: 0.125rem;
+	--plyr-tab-focus-color: var(--plyr-color-main);
+	--plyr-captions-background: rgba(0, 0, 0, 0.8);
+	--plyr-video-wrapper-background: rgba(0, 0, 0, 0.8);
+	--plyr-captions-text-color: #ffffff;
+	--plyr-control-icon-size: 1.125rem;
+	--plyr-control-spacing: 10px;
+	--plyr-control-padding: calc(var(--plyr-control-spacing) * 0.7);
+	--plyr-control-radius: 0.187rem;
+	--plyr-control-toggle-checked-background: var(--plyr-color-main);
+	--plyr-video-controls-background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+	--plyr-video-control-color: #ffffff;
+	--plyr-video-control-color-hover: #ffffff;
+	--plyr-video-control-background-hover: var(--plyr-color-main);
+	--plyr-audio-controls-background: #ffffff;
+	--plyr-audio-control-color: #4a5464;
+	--plyr-audio-control-color-hover: #ffffff;
+	--plyr-audio-control-background-hover: var(--plyr-color-main);
+	--plyr-menu-background: rgba(255, 255, 255, 0.9);
+	--plyr-menu-color: #4a5464;
+	--plyr-menu-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+	--plyr-menu-radius: 0.25rem;
+	--plyr-menu-arrow-size: 0.375rem;
+	--plyr-menu-item-arrow-color:#728197;
+	--plyr-menu-item-arrow-size: 0.25rem;
+	--plyr-menu-border-color: #dcdfe5;
+	--plyr-menu-border-shadow-color: #ffffff;
+	--plyr-progress-loading-size: 1.562rem;
+	--plyr-progress-loading-background: rgba(35, 40, 47, 0.6);
+	--plyr-video-progress-buffered-background: rgba(255, 255, 255, 0.25);
+	--plyr-audio-progress-buffered-background: rgba(193, 200, 209, 0.6);
+	--plyr-range-thumb-height: 0.812rem;
+	--plyr-range-thumb-background: #ffffff;
+	--plyr-range-thumb-shadow: 0 1px 1px rgba(215, 26, 18, 0.15), 0 0 0 1px rgba(215, 26, 18, 0.2);
+	--plyr-range-thumb-active-shadow-width: 0.187rem;
+	--plyr-range-track-height: 0.312rem;
+	--plyr-range-fill-background: var(--plyr-color-main);
+	--plyr-video-range-track-background: var(--plyr-video-progress-buffered-background);
+	--plyr-video-range-thumb-active-shadow-color: rgba(255, 255, 255, 0.5);
+	--plyr-audio-range-track-background: var(--plyr-video-progress-buffered-background);
+	--plyr-audio-range-thumb-active-shadow-color: rgba(215, 26, 18, 0.1);
+	--plyr-tooltip-background: rgba(255, 255, 255, 0.9);
+	--plyr-tooltip-color: #4a5464;
+	--plyr-tooltip-padding:  calc(var(--plyr-control-spacing) / 2);
+	--plyr-tooltip-arrow-size: 0,25rem;
+	--plyr-tooltip-radius: 0.187rem;
+	--plyr-tooltip-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+	--plyr-font-size-base: 15px;
+	--plyr-font-size-small: 13px;
+	--plyr-font-size-large: 18px;
+	--plyr-font-size-xlarge: 21px;
+	--plyr-font-size-time: var(--plyr-font-size-small);
+	--plyr-font-size-menu:  var(--plyr-font-size-small);;
+	--plyr-font-size-badge: 9px;
+	--plyr-font-weight-regular: 400;
+	--plyr-font-weight-bold: 600;
+	--plyr-line-height: 1.7;
+	--plyr-font-smoothing: false;
+
+	//SPFP
+	--spfp-background: transparent;
+	--spfp-position: fixed;
+	--spfp-section-padding: 3.125rem;
+	--spfp-section-margin: 0;
+	--spfp-logo-position: var(--spfp-section-padding);
+	--spfp-btn-position: var(--spfp-section-padding);
+	--spfp-btn-icon-color: #fff;
+	--spfp-content-background: linear-gradient(90deg, rgba(0,0,0,0.80) 0%, rgba(32, 32, 32, 0.66) 35%, rgba(255,255,255,0) 100%);
+	--spfp-menu-background: rgba(0,0,0, 0.8);
+	--spfp-menu-color: #fff;
+	--spfp-menu-list-background: var(--spfp-menu-background);
+	--spfp-menu-list-color: rgba(255, 254, 254, 0.7);
+
+}

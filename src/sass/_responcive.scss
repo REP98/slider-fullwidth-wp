@@ -1,0 +1,48 @@
+/*---------------RESPONCIVE-------------------*/
+/*----------------MOBILE----------------------*/
+@media screen and (max-width: pxTorem(576px)) {
+	.spfp-rp{
+		& .rp-container{
+			& .rp-section{
+				flex-direction: column !important;
+				& .rp-content{
+					margin: auto;
+					width: 100% !important;
+					max-width: 100% !important;
+					flex-basis: 100% !important;
+					height: auto !important;
+					min-height: auto !important;
+				}
+			}
+		}
+	}
+}
+/*----------------TABLET----------------------*/
+@media screen and (max-width: pxTorem(768px)) {
+	.rp-menu{ display: none !important; }
+	.plyr__controls{ max-width: 100%; }
+}
+@media screen and (min-width: pxTorem(769px)) {
+	.plyr__controls{ max-width: calc(100% - 6.25rem) !important; }
+	html:not(.rp__istablet),
+	html:not(.rp__isphone)
+	{
+		.rp-menumovil{ display: none !important; }
+		.rp-section{
+			padding-right: pxTorem(105px) !important;
+		}
+	}
+	html.rp__isphone, html.rp__istablet{
+		& .rp-menu { display: none !important; }
+		& .plyr__controls{ max-width: 100%; }
+	}
+
+}
+/*----------------LAPTOP----------------------*/
+@media screen and (max-width: pxTorem(992px)) {
+	
+}
+/*----------------DESKTOP----------------------*/
+@media screen and (max-width: pxTorem(1200px)) {
+	
+}

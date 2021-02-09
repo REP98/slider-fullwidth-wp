@@ -1,0 +1,143 @@
+html.rp__isphone, html.rp__istablet{
+	& .rp-menu .rp-fullscreen { display: none !important; }
+}
+a{
+	text-decoration: none;
+}
+.rp-menu{
+	position: fixed;
+    left: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: pxTorem(100px);
+    height: auto;
+	opacity:1;
+    transition: all .2s;
+    padding: 0;
+    padding-top: var(--spfp-section-padding);
+    padding-bottom: var(--spfp-section-padding);
+    z-index: 11;
+    background-color: rgba(0,0,0,0.5);
+    border: 0;
+    border-left: 1px dashed rgba(255,255,255,0.4);
+
+    & .rp_menu-content{
+    	width: 100%;
+    	display: flex;
+    	flex-direction: column;
+    	min-height: 100%;
+
+
+    	& .returns{
+    		width: 100%;
+			color: #fff;
+			padding: 0rem;
+			height: pxTorem(48px);
+			text-align: center;
+			align-self: flex-start;
+			& svg{
+				height: pxTorem(40px) !important;
+			}
+    	}
+    	& .rp-timeline{
+			align-self: center;
+			height: calc(100vh - 13rem) !important;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+
+			
+    		& .rp_tl-content{
+    			z-index: 11;
+    			display: block;
+    			position: relative;
+
+    			&:not(:first-child){
+    				margin-top: pxTorem(15px);
+    				&::before{
+						content: '';
+						position: absolute;
+						width: pxTorem(2px);
+						background-color: rgb(140, 139, 137);
+						top: -0.937rem;
+						bottom: 100%;
+						left: 49%;
+					}
+    			}
+
+    			&:not(.rp_card-video){
+    				width: pxTorem(15px);
+    				height: pxTorem(15px);
+    			}
+    			&.rp_card-video{
+    				width: pxTorem(20px);
+    				height: pxTorem(20px);
+    			}
+    			& a{
+    				background-color: rgb(140, 139, 137);
+					border-radius: 50%;
+					text-decoration: none;
+					height: 100%;
+					width: 100%;
+					display: block;
+					transition: all .2s; 
+
+					&:focus,
+					&:hover,
+					&:active,
+					&.active{
+						background-color: #fff !important;
+					}
+					&:focus,
+					&:hover,
+					&:active{
+						& + .rp_card{
+							transform: scale(1) translatex(0%);
+						}
+					}
+    			}
+    		}
+
+    		& .rp_card{
+    			position: absolute;
+    			left: calc(-100% - 13rem);
+    			top: pxTorem(-34px);
+    			min-width: 12.5rem;
+    			width: 12.5rem;
+    		}
+    	}
+
+    	& .rp-fullscreen{
+    		width: 100%;
+			color: #fff;
+			padding: 0rem;
+			height: pxTorem(48px);
+			text-align: center;
+			align-self: flex-end;
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+
+			& svg{
+				height: 2rem !important;
+			}
+
+    	}
+
+    	& .rp-fullscreen,
+    	& .returns{
+    		& span{
+				display: block;
+				font-size: 2rem;
+			}
+			& a{
+				color: rgba(255,255,255,0.4);
+				&:hover{ color: #fff !important; }
+			}
+			
+    	}
+    }
+}

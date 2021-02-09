@@ -1,0 +1,27 @@
+{
+    "name": "rep98/slider-post-fullpage-wp",
+    "description": "Muestra Post a pantalla completa wordpress",
+    "type": "plugins",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Perez",
+            "email": "delfinmundo@gmail.com"
+        }
+    ],
+    "require": {
+        "windwalker/edge":"^3.5" 
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "autoload":{
+        "psr-4":{
+            "Bin\\": "lib/"
+        }
+    }
+}

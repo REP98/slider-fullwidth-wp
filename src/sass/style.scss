@@ -1,0 +1,114 @@
+/*!
+ * Estilos de SPFP
+ */
+@import "./var";
+@import "./fun";
+
+@import "./root";
+
+@import '../../node_modules/normalize.css/normalize.css';
+
+html,body{
+	margin: 0 !important;
+	font-size: $font-size-base;
+	font-family: $font-family;
+	line-height: 1rem;
+	& *{
+		box-sizing: border-box;
+		clear: both;
+	}
+}
+body{
+	text-rendering: optimizeSpeed;
+}
+
+@import "../../node_modules/animate.css/animate.min.css";
+@import '../../node_modules/@simonwep/pickr/dist/themes/classic.min.css';
+@import "./plyr";
+@import './modal';
+
+@import './spfp';
+
+.btn{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: pxTorem(4px);
+	box-shadow: none;
+	display: inline-flex;
+	font-size: 1rem;
+	height: 2.25em;
+	justify-content: flex-start;
+	line-height: 1.5;
+	padding-bottom: calc(0.375em - 1px);
+	padding-left: calc(0.625em - 1px);
+	padding-right: calc(0.625em - 1px);
+	padding-top: calc(0.375em - 1px);
+	position: relative;
+	vertical-align: top;
+	background-color: white;
+	border-color: #dbdbdb;
+	border-width: 1px;
+	color: #363636;
+	cursor: pointer;
+	text-align: center;
+	white-space: nowrap;
+
+	&:active,
+	&:focus{ outline: none; }
+	
+	&:hover{
+		border-color: #b5b5b5;
+  		color: #363636;
+	}
+	&:active{
+		border-color: #3273dc;
+  		color: #363636;
+	}
+	&:focus:not(:active) {
+	  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+	}
+	&:active {
+		border-color: #4a4a4a;
+		color: #363636;
+	}
+	&.disable,
+	&[disabled]{
+		cursor: not-allowed;
+		background-color: white;
+		border-color: #dbdbdb;
+		box-shadow: none;
+		opacity: 0.5;
+	}
+
+	& strong {
+	  color: inherit;
+	}
+	& .icon{
+		height: 1.5em;
+		width: 1.5em;
+	}
+	& .icon:first-child:not(:last-child) {
+		margin-left: calc(-0.375em - 1px);
+		margin-right: 0.1875em;
+	}
+	& .icon:last-child:not(:first-child) {
+		margin-left: 0.1875em;
+		margin-right: calc(-0.375em - 1px);
+	}
+	& .icon:first-child:last-child {
+		margin-left: calc(-0.375em - 1px);
+		margin-right: calc(-0.375em - 1px);
+	}
+
+}
+@import './card';
+@import './menu';
+@import './menumovil';
+@import './responcive';

@@ -1,0 +1,36 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Slider Post Full Page\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-26 05:19+0000\n"
+"PO-Revision-Date: 2021-01-26 05:26+0000\n"
+"Last-Translator: Robert Pérez\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.0; wp-5.6\n"
+"X-Domain: spfp"
+
+#. Author URI of the plugin
+msgid "https://moreno.website/"
+msgstr "https://moreno.website/"
+
+#. URI of the plugin
+msgid "https://moreno.website/spfp"
+msgstr "https://moreno.website/spfp"
+
+#. Author of the plugin
+msgid "Luis Moreno"
+msgstr "Luis Moreno"
+
+#. Description of the plugin
+msgid "Slider de post en pantalla completa para ArtPost."
+msgstr "Full screen post slider for ArtPost."
+
+#. Name of the plugin
+msgid "Slider Post Full Page"
+msgstr "Slider Post Full Page"

@@ -1,0 +1,283 @@
+$font-family: -apple-system, 'Asap Condensed', "Open Sans","Segoe UI", sans-serif, "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-size-base: 16px;
+
+
+//PLYR
+// global map to be filled via variables
+$css-vars: ();
+
+// the variable may be set to "true" anywhere in the code,
+// so native CSS custom properties will be used instead of the Sass global map
+$css-vars-use-native: false !default;
+
+///
+// Assigns a variable to the global map
+///
+@function css-var-assign($varName: null, $varValue: null) {
+  @return map-merge(
+    $css-vars,
+    (
+      $varName: $varValue,
+    )
+  );
+}
+
+///
+// Emulates var() CSS native function behavior
+//
+// $args[0] {String} "--" + variable name
+// [$args[1]] Optional default value if variable is not assigned yet
+//
+// E.G.:
+// color: var(--main-color);
+// background: var(--main-background, green);
+///
+@function var($args...) {
+  // CHECK PARAMS
+  @if (length($args) ==0) {
+    @error 'Variable name is expected to be passed to the var() function';
+  }
+  @if (str-length(nth($args, 1)) < 2 or str-slice(nth($args, 1), 0, 2) != '--') {
+    @error "Variable name is expected to start from '--'";
+  }
+
+  // PROCESS
+  $var-name: nth($args, 1);
+  $var-value: map-get($css-vars, $var-name);
+
+  @if ($css-vars-use-native) {
+    // CSS variables
+    // Native CSS: don't process function in case of native
+    @return unquote('var(' + $args + ')');
+  } @else {
+    @if ($var-value == null) {
+      // variable is not provided so far
+      @if (length($args) == 2) {
+        $var-value: nth($args, 2);
+      }
+    }
+
+    // Sass: return value from the map
+    @return $var-value;
+  }
+}
+
+///
+// SASS mixin to provide variables
+// E.G.:
+// @include css-vars((
+//    --color: rebeccapurple,
+//    --height: 68px,
+//    --margin-top: calc(2vh + 20px)
+// ));
+///
+@mixin css-vars($var-map: null) {
+  // CHECK PARAMS
+  @if ($var-map == null) {
+    @error 'Map of variables is expected, instead got: null';
+  }
+  @if (type_of($var-map) != map) {
+    @error 'Map of variables is expected, instead got another type passed: #{type_of($var, ap)}';
+  }
+
+  // PROCESS
+  @if ($css-vars-use-native) {
+    // CSS variables
+    // Native CSS: assign CSS custom properties to the global scope
+    @at-root :root {
+      @each $var-name, $var-value in $var-map {
+        @if (type_of($var-value) == string) {
+          #{$var-name}: $var-value; // to prevent quotes interpolation
+        } @else {
+          #{$var-name}: #{$var-value};
+        }
+      }
+    }
+  } @else {
+    // Sass or debug
+    // merge variables and values to the global map (provides no output)
+    @each $var-name, $var-value in $var-map {
+      $css-vars: css-var-assign($varName, $varValue) !global; // store in global variable
+    }
+  }
+}
+
+$css-vars-use-native: true;
+
+$plyr-bp-sm: 480px !default;
+$plyr-bp-md: 768px !default;
+$plyr-bp-lg: 1024px !default;
+
+$plyr-color-main: var(--plyr-color-main, hsl(198, 100%, 50%)) !default;
+
+// Grayscale
+$plyr-color-gray-900: hsl(216, 15%, 16%) !default;
+$plyr-color-gray-800: hsl(216, 15%, 25%) !default;
+$plyr-color-gray-700: hsl(216, 15%, 34%) !default;
+$plyr-color-gray-600: hsl(216, 15%, 43%) !default;
+$plyr-color-gray-500: hsl(216, 15%, 52%) !default;
+$plyr-color-gray-400: hsl(216, 15%, 61%) !default;
+$plyr-color-gray-300: hsl(216, 15%, 70%) !default;
+$plyr-color-gray-200: hsl(216, 15%, 79%) !default;
+$plyr-color-gray-100: hsl(216, 15%, 88%) !default;
+$plyr-color-gray-50: hsl(216, 15%, 97%) !default;
+
+$plyr-tab-focus-color: var(--plyr-tab-focus-color, var(--plyr-color-main, $plyr-color-main)) !default;
+
+// ==========================================================================
+// Typography
+// ==========================================================================
+
+$plyr-font-family: var(--plyr-font-family, inherit) !default;
+$plyr-font-size-base: var(--plyr-font-size-base, 15px) !default;
+$plyr-font-size-small: var(--plyr-font-size-small, 13px) !default;
+$plyr-font-size-large: var(--plyr-font-size-large, 18px) !default;
+$plyr-font-size-xlarge: var(--plyr-font-size-xlarge, 21px) !default;
+
+$plyr-font-size-time: var(--plyr-font-size-time, $plyr-font-size-small) !default;
+$plyr-font-size-menu: var(--plyr-font-size-menu, $plyr-font-size-small) !default;
+$plyr-font-size-badge: var(--plyr-font-size-badge, 9px) !default;
+
+$plyr-font-weight-regular: var(--plyr-font-weight-regular, 400) !default;
+$plyr-font-weight-bold: var(--plyr-font-weight-bold, 600) !default;
+
+$plyr-line-height: var(--plyr-line-height, 1.7) !default;
+
+$plyr-font-smoothing: var(--plyr-font-smoothing, false) !default;
+
+$plyr-badge-background: var(--plyr-badge-background, $plyr-color-gray-700) !default;
+$plyr-badge-text-color: var(--plyr-badge-text-color, #fff) !default;
+$plyr-badge-border-radius: var(--plyr-badge-border-radius, 2px) !default;
+
+$plyr-captions-background: var(--plyr-captions-background, rgba(#000, 0.8)) !default;
+$plyr-captions-text-color: var(--plyr-captions-text-color, #fff) !default;
+
+$plyr-font-size-captions-base: $plyr-font-size-base !default;
+$plyr-font-size-captions-small: $plyr-font-size-small !default;
+$plyr-font-size-captions-medium: $plyr-font-size-large !default;
+$plyr-font-size-captions-large: $plyr-font-size-xlarge !default;
+// ==========================================================================
+// Controls
+// ==========================================================================
+
+$plyr-control-icon-size: var(--plyr-control-icon-size, 18px) !default;
+$plyr-control-spacing: var(--plyr-control-spacing, 10px) !default;
+$plyr-control-padding: calc(#{$plyr-control-spacing} * 0.7);
+$plyr-control-padding: var(--plyr-control-padding, $plyr-control-padding) !default;
+$plyr-control-radius: var(--plyr-control-radius, 3px) !default;
+
+$plyr-control-toggle-checked-background: var(
+  --plyr-control-toggle-checked-background,
+  var(--plyr-color-main, $plyr-color-main)
+) !default;
+
+$plyr-video-controls-background: var(
+  --plyr-video-controls-background,
+  linear-gradient(rgba(#000, 0), rgba(#000, 0.75))
+) !default;
+$plyr-video-control-color: var(--plyr-video-control-color, #fff) !default;
+$plyr-video-control-color-hover: var(--plyr-video-control-color-hover, #fff) !default;
+$plyr-video-control-background-hover: var(
+  --plyr-video-control-background-hover,
+  var(--plyr-color-main, $plyr-color-main)
+) !default;
+
+$plyr-audio-controls-background: var(--plyr-audio-controls-background, #fff) !default;
+$plyr-audio-control-color: var(--plyr-audio-control-color, $plyr-color-gray-700) !default;
+$plyr-audio-control-color-hover: var(--plyr-audio-control-color-hover, #fff) !default;
+$plyr-audio-control-background-hover: var(
+  --plyr-audio-control-background-hover,
+  var(--plyr-color-main, $plyr-color-main)
+) !default;
+
+// ==========================================================================
+// Enable helpers
+// ==========================================================================
+
+$plyr-border-box: true !default;
+$plyr-touch-action: true !default;
+$plyr-sr-only-important: true !default;
+
+// ==========================================================================
+// Menus
+// ==========================================================================
+
+$plyr-menu-background: var(--plyr-menu-background, rgba(#fff, 0.9)) !default;
+$plyr-menu-radius: var(--plyr-menu-radius, 4px) !default;
+$plyr-menu-color: var(--plyr-menu-color, $plyr-color-gray-700) !default;
+$plyr-menu-shadow: var(--plyr-menu-shadow, 0 1px 2px rgba(#000, 0.15)) !default;
+$plyr-menu-arrow-size: var(--plyr-menu-arrow-size, 4px) !default;
+
+$plyr-menu-item-arrow-size: var(--plyr-menu-item-arrow-size, 4px) !default;
+$plyr-menu-item-arrow-color: var(--plyr-menu-arrow-color, $plyr-color-gray-500) !default;
+
+$plyr-menu-back-border-color: var(--plyr-menu-back-border-color, $plyr-color-gray-100) !default;
+$plyr-menu-back-border-shadow-color: var(--plyr-menu-back-border-shadow-color, #fff) !default;
+
+// ==========================================================================
+// Progress
+// ==========================================================================
+
+// Loading
+$plyr-progress-loading-size: var(--plyr-progress-loading-size, 25px) !default;
+$plyr-progress-loading-background: var(--plyr-progress-loading-background, rgba($plyr-color-gray-900, 0.6)) !default;
+
+// Buffered
+$plyr-video-progress-buffered-background: var(--plyr-video-progress-buffered-background, rgba(#fff, 0.25)) !default;
+$plyr-audio-progress-buffered-background: var(
+  --plyr-audio-progress-buffered-background,
+  rgba($plyr-color-gray-200, 0.6)
+) !default;
+
+// ==========================================================================
+// Sliders
+// ==========================================================================
+
+// Thumb
+$plyr-range-thumb-height: var(--plyr-range-thumb-height, 13px) !default;
+$plyr-range-thumb-background: var(--plyr-range-thumb-background, #fff) !default;
+$plyr-range-thumb-shadow: var(
+  --plyr-range-thumb-shadow,
+  0 1px 1px rgba($plyr-color-gray-900, 0.15),
+  0 0 0 1px rgba($plyr-color-gray-900, 0.2)
+) !default;
+
+// Active state
+$plyr-range-thumb-active-shadow-width: var(--plyr-range-thumb-active-shadow-width, 3px) !default;
+
+// Track
+$plyr-range-track-height: var(--plyr-range-track-height, 5px) !default;
+
+// Fill
+$plyr-range-fill-background: var(--plyr-range-fill-background, var(--plyr-color-main, $plyr-color-main)) !default;
+
+// Type specific
+$plyr-video-range-track-background: var(
+  --plyr-video-range-track-background,
+  $plyr-video-progress-buffered-background
+) !default;
+$plyr-video-range-thumb-active-shadow-color: var(
+  --plyr-audio-range-thumb-active-shadow-color,
+  rgba(#fff, 0.5)
+) !default;
+
+$plyr-audio-range-track-background: var(
+  --plyr-audio-range-track-background,
+  $plyr-audio-progress-buffered-background
+) !default;
+$plyr-audio-range-thumb-active-shadow-color: var(
+  --plyr-audio-range-thumb-active-shadow-color,
+  rgba($plyr-color-gray-900, 0.1)
+) !default;
+
+// ==========================================================================
+// Tooltips
+// ==========================================================================
+
+$plyr-tooltip-background: var(--plyr-tooltip-background, rgba(#fff, 0.9)) !default;
+$plyr-tooltip-color: var(--plyr-tooltip-color, $plyr-color-gray-700) !default;
+$plyr-tooltip-padding: calc(#{$plyr-control-spacing} / 2);
+$plyr-tooltip-padding: var(--plyr-tooltip-padding, $plyr-tooltip-padding) !default;
+$plyr-tooltip-arrow-size: var(--plyr-tooltip-arrow-size, 4px) !default;
+$plyr-tooltip-radius: var(--plyr-tooltip-radius, 3px) !default;
+$plyr-tooltip-shadow: var(--plyr-tooltip-shadow, 0 1px 2px rgba(0, 0, 0, 0.15)) !default;
